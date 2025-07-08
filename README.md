@@ -34,8 +34,8 @@ A simple Java-based bookstore system that supports inventory management, purchas
 ```
 </details>
 
-## Class Diagram 
-
+## Diagrams
+### Class Diagram
 ```mermaid
 classDiagram
 
@@ -102,6 +102,34 @@ class ShippingService {
 EBook ..> MailService : uses
 PaperBook ..> ShippingService : uses
 
+```
+### Sequence Diagram
+```mermaid
+sequenceDiagram
+    participant Customer
+    participant Inventory
+    participant Book
+    participant EBook
+    participant MailService
+    participant PaperBook
+    participant ShippingService
+
+    Customer->>Inventory: buyBook(ISBN, quantity, email, address)
+    Inventory->>Book: getPrice()
+    Inventory->>Book: deliver(quantity, email, address)
+
+    alt Book is EBook
+        Book->>EBook: deliver()
+        EBook->>MailService: send(email, book, quantity)
+    else Book is PaperBook
+        Book->>PaperBook: deliver()
+        PaperBook->>ShippingService: ship(address, book, quantity)
+    else Book is ShowcaseBook
+        Book->>ShowcaseBook: deliver()
+        ShowcaseBook--xInventory: throw UnsupportedOperationException
+    end
+
+    Inventory-->>Customer: return totalCost
 ```
 ## 📦 Sample Demo (from Main.java):
 
