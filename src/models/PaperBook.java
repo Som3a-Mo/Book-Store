@@ -16,6 +16,9 @@ public class PaperBook extends Book {
 
     @Override
     public void deliver(int quantity, String email, String address) {
+        if (quantity > stock) {
+            throw new IllegalArgumentException("Insufficient stock");
+        }
         this.stock -= quantity;
         ShippingService.ship(address, this, quantity);
     }

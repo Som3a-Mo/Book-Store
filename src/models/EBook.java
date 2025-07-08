@@ -16,6 +16,9 @@ public class EBook extends Book {
 
     @Override
     public void deliver(int quantity, String email, String address) {
+        if (quantity > 1) {
+            throw new IllegalArgumentException("Insufficient quantity");
+        }
         MailService.send(email, this, quantity);
     }
 }

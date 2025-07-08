@@ -13,13 +13,6 @@ public class Inventory {
 
         List<Book> outdatedBooks = new ArrayList<>();
         int currentYear = Year.now().getValue();
-//        for (String ISBN : books.keySet()) {
-//            Book book = books.get(ISBN);
-//            if (currentYear - book.getYearPublished() > maxAgeYears) {
-//                outdatedBooks.add(book);
-//                books.remove(ISBN);
-//            }
-//        }
         Iterator<Map.Entry<String, Book>> iterator = books.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, Book> entry = iterator.next();
@@ -39,23 +32,13 @@ public class Inventory {
         if (book == null) {
             throw new IllegalArgumentException("Book not found");
         }
-        if (book instanceof ShowcaseBook){
-            throw new UnsupportedOperationException("This book is not for sale");
-        }
-        if (book instanceof PaperBook){
-            PaperBook paperBook = (PaperBook) book;
-            if (paperBook.getStock() < quantity) {
-                throw new IllegalArgumentException("Insufficient stock");
-            }
-        }
-        if (book instanceof EBook){
-            if (quantity > 1) {
-                throw new IllegalArgumentException("Insufficient quantity");
-            }
-        }
 
         double totalCost = book.getPrice() * quantity;
-        book.deliver(quantity, email, address);
+        try {
+            book.deliver(quantity, email, address);
+        }catch (Exception e){
+            throw e;
+        }
         return totalCost;
     }
 

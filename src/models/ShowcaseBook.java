@@ -8,6 +8,6 @@ public class ShowcaseBook extends Book {
 
     @Override
     public void deliver(int quantity, String email, String address) {
-        throw new UnsupportedOperationException("Not supported operation for ShowcaseBook.");
+        throw new UnsupportedOperationException("This book is not for sale");
     }
 }
