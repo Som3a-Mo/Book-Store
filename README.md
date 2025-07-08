@@ -2,7 +2,6 @@
 
 A simple Java-based bookstore system that supports inventory management, purchasing (both physical and digital books), and handling showcase books. The system demonstrates core OOP principles like inheritance, polymorphism, and encapsulation.
 
----
 
 ## 🛠️ Features
 
@@ -63,8 +62,10 @@ testBuyOperation(store, "BlaBlaBla-ISBN", 1, "", "");
 ** Testing Book Removal **
 Removed 1 outdated books
 
-** Testing Buy Book Operation **
+** Testing Buy Book Operation  **
+Shipping 2 copy/copies of 'Java Fundamentals' to Cairo
 Purchased 2 of ISBN001: $59.98
+Sending 'Advanced Java' (PDF) to Som3a-mo@gmail.com
 Purchased 1 of ISBN002: $19.99
 
 ** Testing Edge Cases **
