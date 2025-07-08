@@ -48,6 +48,11 @@ public class Inventory {
                 throw new IllegalArgumentException("Insufficient stock");
             }
         }
+        if (book instanceof EBook){
+            if (quantity > 1) {
+                throw new IllegalArgumentException("Insufficient quantity");
+            }
+        }
 
         double totalCost = book.getPrice() * quantity;
         book.deliver(quantity, email, address);
