@@ -34,6 +34,75 @@ A simple Java-based bookstore system that supports inventory management, purchas
 ```
 </details>
 
+## Class Diagram 
+
+```mermaid
+classDiagram
+
+class Book {
+    <<Abstract>>
+    -String ISBN
+    -String title
+    -int yearPublished
+    -double price
+    +getISBN()
+    +getTitle()
+    +getYearPublished()
+    +getPrice()
+    +deliver(quantity, email, address)*
+}
+
+class EBook {
+    -FileType fileType
+    +getFileType()
+    +deliver(quantity, email, address)
+}
+
+class PaperBook {
+    -int stock
+    +getStock()
+    +deliver(quantity, email, address)
+}
+
+class ShowcaseBook {
+    +deliver(quantity, email, address)
+}
+
+class Inventory {
+    -HashMap~String, Book~ books
+    +addBook(book)
+    +removeOutdatedBooks(maxAgeYears)
+    +buyBook(ISBN, quantity, email, address)
+}
+
+class FileType {
+    <<Enumeration>>
+    DOC
+    PDF
+    TXT
+    DOCX
+    RTF
+    ODT
+}
+
+Book <|-- EBook
+Book <|-- PaperBook
+Book <|-- ShowcaseBook
+Inventory --> Book
+EBook --> FileType
+
+class MailService {
+    +send(email, book, quantity)$
+}
+
+class ShippingService {
+    +ship(address, book, quantity)$
+}
+
+EBook ..> MailService : uses
+PaperBook ..> ShippingService : uses
+
+```
 ## 📦 Sample Demo (from Main.java):
 
 
