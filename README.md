@@ -133,7 +133,6 @@ sequenceDiagram
 ```
 ## 📦 Sample Demo (from Main.java):
 
-
 ```csh
 int currentYear = 2025;
 
@@ -170,6 +169,10 @@ Purchase failed: This book is not for sale
 Purchase failed: Insufficient stock
 Purchase failed: Book not found
 ```
+### Screenshots 
+![image](https://github.com/user-attachments/assets/f3b9320b-851a-4b17-a6d3-d750a06d2fce)
+![image](https://github.com/user-attachments/assets/619778c1-54bd-4d34-9a45-5c74bd431552)
+
 
 ## 💡 Technologies Used
 
